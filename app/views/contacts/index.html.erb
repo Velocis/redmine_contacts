@@ -1,0 +1,28 @@
+<p align="center"><%= link_to "Update Your Contact Info", :controller => "my", :action => "account" %></p>
+<table class="list">
+  <thead>
+    <tr>
+      <th style="width:26px;">&nbsp</th>
+      <th>Name (Login)</th>
+      <th>Email</th>
+      <% @fields.each do |field| %>
+      <th><%= field.name %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td style="width:26px;"><%= avatar(user, :size => 24) %></td>
+      <td><b><%= link_to("#{user.name} (#{user.login})", :controller => 'users', :action => 'show', :id => user) %></b></td>
+      <td><%= mail_to(user.mail) %></td>
+      <% @fields.each do |field| %>
+      <td>
+        <%= formatted_custom_field(CustomValue.find(:first, :conditions => {:customized_id => user.id, :custom_field_id => field.id}, :include => :custom_field)) %>
+        <%# formatted_custom_field(CustomValue.find_by_customized_id_and_custom_field_id(user.id, field.id)) %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

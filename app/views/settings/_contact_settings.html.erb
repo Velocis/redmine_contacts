@@ -1,0 +1,8 @@
+<% user_fields = UserCustomField.find :all %>
+
+Select the User Custom Fields that contain contact information:
+<p>
+  <label>Contact Fields</label>
+  <%= select_tag 'settings[contact_fields][]',
+     options_from_collection_for_select(user_fields, :id, :name, @settings['contact_fields'].map(&:to_i)), :multiple => true, :size => user_fields.size %><br />
+</p>

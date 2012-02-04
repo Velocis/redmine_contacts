@@ -1,0 +1,11 @@
+= Redmine Contacts
+
+Add a Contacts feature to Redmine.
+
+* Install according to the instructions at http://www.redmine.org/projects/redmine/wiki/Plugins (no migration necessary)
+* Restart Redmine
+* Navigate to Administration -> Custom Fields -> Users 
+* Create User fields to hold contact information such as phone numbers
+* Navigate to Administration -> Plugins -> Contacts -> Configure
+* Select the User custom fields that you set up as Contact fields, and save
+* Go to the Contacts tab
